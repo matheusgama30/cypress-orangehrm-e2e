@@ -9,7 +9,7 @@ export function generateFuncionario() {
     nome,
     sobrenome,
     nomeCompleto: `${nome} ${sobrenome}`,
-    employeeId: faker.number.int({ min: 1000, max: 99999 }).toString(),
+    employeeId: faker.number.int({ min: 1900, max: 99999 }).toString(),
     licenseNumber: faker.number.int({ min: 10000000000, max: 99999999999 }).toString()
   };
 }
