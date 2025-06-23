@@ -6,7 +6,7 @@ describe('Login - OrangeHRM', () => {
 
 
     it('Login com sucesso', () => {
-      cy.login('Admin', 'admin')  // Utiliza o comando customizado de login
+      cy.login('Admin', 'admin123')  // Utiliza o comando customizado de login
       
       // Você pode verificar a URL ou algum outro elemento após o login bem-sucedido
       cy.url().should('include', '/dashboard')  // Verifica se a URL inclui "/dashboard"
