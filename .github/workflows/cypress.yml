@@ -11,7 +11,7 @@ on:
 
 jobs:
   run-e2e-tests:
-    name: 🔎 Testes E2E com Cypress
+    name: Testes E2E com Cypress
     runs-on: ubuntu-latest
 
     steps:
