@@ -2,8 +2,8 @@ name: Cypress CI/CD
 
 on:
   schedule:
-    - cron: '0 */6 * * *'  
-  workflow_dispatch:       
+    - cron: '*/10 * * * *'  
+  workflow_dispatch:        
   push:
     branches: [main]
   pull_request:
@@ -11,7 +11,7 @@ on:
 
 jobs:
   run-e2e-tests:
-    name: Testes E2E com Cypress
+    name: 🔎 Testes E2E com Cypress
     runs-on: ubuntu-latest
 
     steps:
@@ -37,3 +37,17 @@ jobs:
           path: |
             cypress/screenshots
             cypress/videos
+
+      - name: Enviar notificação de sucesso para Slack
+        if: ${{ success() }}
+        run: |
+          curl -X POST -H 'Content-type: application/json' \
+          --data '{"text":"✅ Testes Cypress *passaram* com sucesso no repositório *cypress-orangehrm-e2e*."}' \
+          ${{ secrets.SLACK_WEBHOOK_URL }}
+
+      - name: Enviar notificação de falha para Slack
+        if: ${{ failure() }}
+        run: |
+          curl -X POST -H 'Content-type: application/json' \
+          --data '{"text":"❌ Testes Cypress *falharam* no repositório *cypress-orangehrm-e2e*. Verifique os artefatos."}' \
+          ${{ secrets.SLACK_WEBHOOK_URL }}
