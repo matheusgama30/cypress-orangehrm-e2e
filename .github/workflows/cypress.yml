@@ -1,0 +1,39 @@
+name: Cypress CI/CD
+
+on:
+  schedule:
+    - cron: '0 */6 * * *'  
+  workflow_dispatch:       
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  run-e2e-tests:
+    name: Testes E2E com Cypress
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Clonar repositório
+        uses: actions/checkout@v3
+
+      - name: Instalar Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - name: Instalar dependências
+        run: npm ci
+
+      - name: Executar Cypress em modo headless
+        run: npx cypress run
+
+      - name: Salvar screenshots e vídeos (se falhar)
+        if: always()
+        uses: actions/upload-artifact@v3
+        with:
+          name: cypress-artifacts
+          path: |
+            cypress/screenshots
+            cypress/videos
