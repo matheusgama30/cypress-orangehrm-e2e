@@ -2,7 +2,7 @@ name: Cypress CI/CD
 
 on:
   schedule:
-    - cron: '*/10 * * * *'  
+    - cron: '0 */4 * * *' 
   workflow_dispatch:        
   push:
     branches: [main]
