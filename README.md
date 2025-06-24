@@ -9,7 +9,7 @@ Projeto de testes automatizados de ponta a ponta com [Cypress](https://www.cypre
 
 ✅ **Testes E2E automatizados com Cypress**  
 ✅ **CI/CD configurado com GitHub Actions**  
-✅ **Execução automática a cada 10 minutos via agendamento**  
+✅ **Execução automática a cada 4 horas via agendamento**  
 ✅ **Execução em pushes e pull requests na branch `main`**  
 ✅ **Notificações de sucesso/falha via Webhook do Slack**  
 ✅ **Upload automático de artefatos (screenshots e vídeos)**
@@ -22,7 +22,7 @@ A integração contínua foi projetada para garantir feedback rápido sempre que
 
 - Um push for feito na branch `main`
 - Um pull request for aberto para `main`
-- A cada **10 minutos**, com agendamento recorrente.
+- A cada **4 horas**, com agendamento recorrente.
 - Quando um membro da equipe iniciar manualmente (via **workflow_dispatch**)
 
 ##  Passos do Workflow
